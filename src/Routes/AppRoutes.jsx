@@ -1,33 +1,45 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 
-import Navbar from "../Components/Navbar";
-import Footer from "../Components/Footer";
-
-import HomePage from "../Pages/HomePage";
-import AboutPage from "../Pages/AboutPage";
-import ProductsPage from "../Pages/ProductsPage";
-import CategoriesPage from "../Pages/CategoriesPage";
-import CollectionsPage from "../Pages/CollectionsPage";
-import OffersPage from "../Pages/OffersPage";
-import ContactPage from "../Pages/ContactPage";
+import Home from "../pages/Home";
+import Shop from "../pages/Shop";
+import ProductDetails from "../pages/ProductDetails";
+import Cart from "../pages/Cart";
+import Wishlist from "../pages/Wishlist";
+import Checkout from "../pages/Checkout";
+import Orders from "../pages/Orders";
+import Profile from "../pages/Profile";
+import Login from "../pages/Login";
+import Register from "../pages/Register";
+import About from "../pages/About";
+import Contact from "../pages/Contact";
+import NotFound from "../pages/NotFound";
 
 function AppRoutes() {
   return (
-    <BrowserRouter>
-      <Navbar />
+    <Routes>
+      {/* Main Pages */}
+      <Route path="/" element={<Home />} />
+      <Route path="/shop" element={<Shop />} />
+      <Route path="/product/:id" element={<ProductDetails />} />
 
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/products" element={<ProductsPage />} />
-        <Route path="/categories" element={<CategoriesPage />} />
-        <Route path="/collections" element={<CollectionsPage />} />
-        <Route path="/offers" element={<OffersPage />} />
-        <Route path="/contact" element={<ContactPage />} />
-      </Routes>
+      {/* User */}
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Register />} />
+      <Route path="/profile" element={<Profile />} />
 
-      <Footer />
-    </BrowserRouter>
+      {/* Shopping */}
+      <Route path="/cart" element={<Cart />} />
+      <Route path="/wishlist" element={<Wishlist />} />
+      <Route path="/checkout" element={<Checkout />} />
+      <Route path="/orders" element={<Orders />} />
+
+      {/* Information */}
+      <Route path="/about" element={<About />} />
+      <Route path="/contact" element={<Contact />} />
+
+      {/* 404 */}
+      <Route path="*" element={<NotFound />} />
+    </Routes>
   );
 }
 
