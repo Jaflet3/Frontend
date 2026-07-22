@@ -1,0 +1,353 @@
+/*====================================
+        DON TOYS - STYLE.CSS
+======================================*/
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+body{
+    background:#f4f7fb;
+    color:#333;
+    line-height:1.6;
+}
+
+/*================ HEADER ================*/
+
+header{
+    background:linear-gradient(90deg,#ff6b6b,#ffb347);
+    text-align:center;
+    padding:20px;
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+header h1{
+    color:white;
+    font-size:55px;
+    margin-bottom:20px;
+}
+
+/*================ NAVIGATION ================*/
+
+nav{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:30px;
+}
+
+nav a{
+    color:white;
+    text-decoration:none;
+    font-size:22px;
+    font-weight:600;
+    transition:.3s;
+}
+
+nav a:hover{
+    color:#222;
+}
+
+/*================ HERO BANNER ================*/
+
+.banner{
+    background:linear-gradient(135deg,#ff9a9e,#fad0c4,#fbc2eb);
+    height:320px;
+
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+
+    color:white;
+    text-align:center;
+}
+
+.banner h2{
+    font-size:60px;
+    margin-bottom:15px;
+}
+
+.banner p{
+    font-size:24px;
+}
+
+/*================ CONTAINER ================*/
+
+.container{
+    width:90%;
+    margin:auto;
+    padding:60px 0;
+}
+
+.container h2{
+    text-align:center;
+    font-size:45px;
+    color:#ff4d6d;
+    margin-bottom:40px;
+}
+
+/*================ CARDS ================*/
+
+.cards{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:30px;
+}
+
+.card{
+    width:300px;
+    background:white;
+    border-radius:15px;
+    padding:20px;
+    text-align:center;
+    box-shadow:0 8px 18px rgba(0,0,0,.15);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+}
+
+.card img{
+    width:100%;
+    height:200px;
+    object-fit:cover;
+    border-radius:10px;
+}
+
+.card h3{
+    margin:15px 0 10px;
+    font-size:32px;
+    color:#333;
+}
+
+.card p{
+    color:#666;
+    font-size:17px;
+    margin-bottom:20px;
+}
+
+/*================ BUTTONS ================*/
+
+button{
+    background:#ff4d6d;
+    color:white;
+    border:none;
+    padding:12px 25px;
+    border-radius:30px;
+    cursor:pointer;
+    font-size:16px;
+    transition:.3s;
+}
+
+button:hover{
+    background:#222;
+}
+
+/*================ TABLES ================*/
+
+table{
+    width:100%;
+    border-collapse:collapse;
+    background:white;
+    box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
+
+th{
+    background:#ff6b6b;
+    color:white;
+}
+
+th,td{
+    border:1px solid #ddd;
+    padding:15px;
+    text-align:center;
+}
+
+/*================ GALLERY ================*/
+
+.gallery{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:20px;
+}
+
+.gallery img{
+    width:100%;
+    height:220px;
+    object-fit:cover;
+    border-radius:10px;
+    transition:.3s;
+}
+
+.gallery img:hover{
+    transform:scale(1.05);
+}
+
+/*================ CONTACT FORM ================*/
+
+form{
+    width:60%;
+    margin:auto;
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 8px 18px rgba(0,0,0,.15);
+}
+
+input,
+textarea{
+    width:100%;
+    padding:15px;
+    margin:15px 0;
+    border:1px solid #ccc;
+    border-radius:8px;
+    font-size:16px;
+}
+
+textarea{
+    resize:none;
+}
+
+/*================ CATEGORY BOXES ================*/
+
+.category-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.category-box{
+    background:white;
+    border-radius:15px;
+    padding:25px;
+    text-align:center;
+    box-shadow:0 6px 15px rgba(0,0,0,.15);
+    transition:.3s;
+}
+
+.category-box:hover{
+    transform:translateY(-8px);
+}
+
+.category-box img{
+    width:120px;
+    height:120px;
+    object-fit:cover;
+    border-radius:50%;
+    border:5px solid #ffd166;
+    margin-bottom:15px;
+}
+
+.category-box h3{
+    color:#ff4d6d;
+    margin-bottom:10px;
+}
+
+.category-box p{
+    color:#666;
+    margin-bottom:20px;
+}
+
+.category-box a{
+    text-decoration:none;
+    background:#ff4d6d;
+    color:white;
+    padding:10px 20px;
+    border-radius:25px;
+}
+
+.category-box a:hover{
+    background:#222;
+}
+
+/*================ FEATURES ================*/
+
+.features{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:30px;
+    margin-top:30px;
+}
+
+.feature{
+    width:250px;
+    background:white;
+    padding:25px;
+    text-align:center;
+    border-radius:15px;
+    box-shadow:0 6px 15px rgba(0,0,0,.15);
+}
+
+.feature h3{
+    color:#ff4d6d;
+    margin-bottom:10px;
+}
+
+/*================ FOOTER ================*/
+
+footer{
+    background:#222;
+    color:white;
+    text-align:center;
+    padding:20px;
+    margin-top:50px;
+}
+
+/*================ RESPONSIVE ================*/
+
+@media(max-width:768px){
+
+header h1{
+    font-size:40px;
+}
+
+nav{
+    gap:15px;
+}
+
+nav a{
+    font-size:18px;
+}
+
+.banner{
+    height:240px;
+}
+
+.banner h2{
+    font-size:38px;
+}
+
+.banner p{
+    font-size:18px;
+}
+
+.container h2{
+    font-size:34px;
+}
+
+.card{
+    width:100%;
+}
+
+form{
+    width:90%;
+}
+
+.gallery{
+    grid-template-columns:1fr;
+}
+
+.category-grid{
+    grid-template-columns:1fr;
+}
+
+}
