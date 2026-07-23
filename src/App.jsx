@@ -16,11 +16,21 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Faq from "./pages/Faq";
 import NotFound from "./pages/NotFound";
+import AdminDashboard from "./pages/AdminDashboard";
 import { CartProvider } from "./context/CartContext";
 
 const signedIn = () => Boolean(localStorage.getItem("token"));
+const currentUser = () => {
+  try {
+    return JSON.parse(localStorage.getItem("user") || "null");
+  } catch {
+    return null;
+  }
+};
 const RequireAuth = ({ children }) => signedIn() ? children : <Navigate to="/register" replace />;
+const RequireAdmin = ({ children }) => currentUser()?.role === "admin" ? children : <Navigate to="/" replace />;
 const GuestOnly = ({ children }) => signedIn() ? <Navigate to="/" replace /> : children;
+const HomeRoute = () => currentUser()?.role === "admin" ? <Navigate to="/admin" replace /> : <Home />;
 
 function AppContent() {
   const location = useLocation();
@@ -29,7 +39,8 @@ function AppContent() {
     <Routes>
       <Route path="/login" element={<GuestOnly><Login /></GuestOnly>} />
       <Route path="/register" element={<GuestOnly><Register /></GuestOnly>} />
-      <Route path="/" element={<RequireAuth><Home /></RequireAuth>} />
+      <Route path="/" element={<RequireAuth><HomeRoute /></RequireAuth>} />
+      <Route path="/admin" element={<RequireAuth><RequireAdmin><AdminDashboard /></RequireAdmin></RequireAuth>} />
       <Route path="/shop" element={<RequireAuth><Shop /></RequireAuth>} />
       <Route path="/product/:id" element={<RequireAuth><ProductDetails /></RequireAuth>} />
       <Route path="/cart" element={<RequireAuth><Cart /></RequireAuth>} />

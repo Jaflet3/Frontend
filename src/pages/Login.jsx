@@ -21,7 +21,7 @@ function Login() {
       localStorage.setItem("token", data.token);
       localStorage.setItem("user", JSON.stringify(data.user));
       window.dispatchEvent(new Event("authChanged"));
-      navigate("/profile");
+      navigate(data.user.role === "admin" ? "/admin" : "/");
     } catch (requestError) {
       setError(requestError.response?.data?.message || "Unable to sign in. Please try again.");
     } finally {
