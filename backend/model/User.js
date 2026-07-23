@@ -30,6 +30,16 @@ const userSchema = new mongoose.Schema(
         type: String,
         enum: ["user", "admin"],
         default: "user"
+    },
+
+    lastLoginAt: {
+        type: Date,
+        default: null
+    },
+
+    loginHistory: {
+        type: [Date],
+        default: []
     }
 },
 {

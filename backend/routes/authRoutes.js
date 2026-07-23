@@ -2,7 +2,7 @@ import express from "express";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import User from "../model/User.js";
-import { requireAuth } from "../middleware/auth.js";
+import { requireAdmin, requireAuth } from "../middleware/auth.js";
 
 const router = express.Router();
 
@@ -49,11 +49,21 @@ router.post("/register", async (req, res) => {
 
 router.post("/login", async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { email, password, role } = req.body;
     const user = await User.findOne({ email: email?.toLowerCase().trim() });
     if (!user || !(await bcrypt.compare(password, user.password))) {
       return res.status(400).json({ message: "Invalid email or password" });
     }
+    if (role && user.role !== role) {
+      return res.status(403).json({ message: `This account is registered as a ${user.role}. Please choose the correct login type.` });
+    }
+
+    const loginTime = new Date();
+    user.lastLoginAt = loginTime;
+    user.loginHistory.push(loginTime);
+    // Keep a useful but bounded audit trail on the account document.
+    if (user.loginHistory.length > 50) user.loginHistory = user.loginHistory.slice(-50);
+    await user.save();
 
     const token = jwt.sign({ id: user._id, role: user.role }, process.env.JWT_SECRET, { expiresIn: "1d" });
     return res.json({
@@ -62,6 +72,17 @@ router.post("/login", async (req, res) => {
     });
   } catch (error) {
     return res.status(500).json({ message: "Unable to log in" });
+  }
+});
+
+router.get("/admin/users", requireAuth, requireAdmin, async (req, res) => {
+  try {
+    const users = await User.find({ role: "user" })
+      .select("name email phone role lastLoginAt loginHistory createdAt")
+      .sort({ lastLoginAt: -1, createdAt: -1 });
+    return res.json({ users });
+  } catch {
+    return res.status(500).json({ message: "Unable to retrieve user login activity" });
   }
 });
 

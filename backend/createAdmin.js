@@ -27,7 +27,11 @@ const createAdmin = async()=>{
 
 
         if(existingAdmin){
-            console.log("Admin already exists");
+            existingAdmin.name = "ToyVerse Admin";
+            existingAdmin.role = "admin";
+            if (!existingAdmin.phone) existingAdmin.phone = "0000000000";
+            await existingAdmin.save();
+            console.log("Existing account promoted to administrator");
             process.exit();
         }
 
@@ -43,6 +47,8 @@ const createAdmin = async()=>{
             name:"ToyVerse Admin",
 
             email:"admin@toyverse.com",
+
+            phone:"0000000000",
 
             password:hashedPassword,
 

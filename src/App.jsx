@@ -17,6 +17,7 @@ import Contact from "./pages/Contact";
 import Faq from "./pages/Faq";
 import NotFound from "./pages/NotFound";
 import AdminDashboard from "./pages/AdminDashboard";
+import LoginActivity from "./pages/LoginActivity";
 import { CartProvider } from "./context/CartContext";
 
 const signedIn = () => Boolean(localStorage.getItem("token"));
@@ -41,6 +42,7 @@ function AppContent() {
       <Route path="/register" element={<GuestOnly><Register /></GuestOnly>} />
       <Route path="/" element={<RequireAuth><HomeRoute /></RequireAuth>} />
       <Route path="/admin" element={<RequireAuth><RequireAdmin><AdminDashboard /></RequireAdmin></RequireAuth>} />
+      <Route path="/admin/login-activity" element={<RequireAuth><RequireAdmin><LoginActivity /></RequireAdmin></RequireAuth>} />
       <Route path="/shop" element={<RequireAuth><Shop /></RequireAuth>} />
       <Route path="/product/:id" element={<RequireAuth><ProductDetails /></RequireAuth>} />
       <Route path="/cart" element={<RequireAuth><Cart /></RequireAuth>} />
