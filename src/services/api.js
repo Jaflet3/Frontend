@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Create Axios instance
 const API = axios.create({
-  baseURL: "http://localhost:5000/api",
+  baseURL: process.env.REACT_APP_API_URL || "https://frontend-2-3vs9.onrender.com/api",
   timeout: 10000,
   headers: {
     "Content-Type": "application/json",
