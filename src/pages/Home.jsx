@@ -1,4 +1,4 @@
-import Hero from "../components/Hero";
+import Hero from "../Components/Hero";
 import { toys } from "../data/toys";
 import { useCart } from "../context/CartContext";
 
